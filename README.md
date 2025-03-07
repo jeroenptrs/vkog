@@ -13,6 +13,8 @@ VKOG is a simple, lightweight, and extendable key-value store written in Go. It 
 
 ## Installation
 
+### From Source
+
 ```bash
 # Clone the repository
 git clone https://github.com/yourusername/vkog.git
@@ -22,9 +24,23 @@ cd vkog
 go build -o vkog
 ```
 
+### Using Docker
+
+```bash
+# Build and start using Docker Compose
+docker-compose up -d
+
+# Or build the Docker image manually
+docker build -t vkog .
+# Run the container
+docker run -d -p 3110:3110 -v vkog_data:/data --name vkog vkog
+```
+
 ## Usage
 
 ### Starting the Server
+
+#### Binary
 
 ```bash
 # Start with default settings (128MB max size, local.vkog file)
@@ -37,6 +53,21 @@ go build -o vkog
 Command-line options:
 - `-s`: Maximum size in bytes (default: 128MB)
 - `-f`: Storage file name (default: local.vkog)
+
+#### Docker
+
+```bash
+# Start with custom settings using environment variables
+docker run -d -p 3110:3110 \
+  -e VKOG_MAX_SIZE=268435456 \
+  -e VKOG_FILE=/data/custom.vkog \
+  -v vkog_data:/data \
+  --name vkog vkog
+```
+
+Environment variables:
+- `VKOG_MAX_SIZE`: Maximum size in bytes (default: 128MB)
+- `VKOG_FILE`: Storage file path (default: /data/vkog.data)
 
 ### HTTP API
 

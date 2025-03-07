@@ -1,0 +1,23 @@
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Build artifacts
+vkog
+*.vkog
+*.data
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Misc
+README.md
+LICENSE

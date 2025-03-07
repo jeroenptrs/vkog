@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  vkog:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3110:3110"
+    environment:
+      # - VKOG_MAX_SIZE=134217728
+      - VKOG_FILE=/data/vkog.data
+    volumes:
+      - vkog_data:/data
+    restart: unless-stopped
+
+volumes:
+  vkog_data:
